@@ -18,4 +18,27 @@
 				DEFAULT)
 	</entry>
 	
+	<!-- 아이디 중복 검사 -->
+	<entry key="idCheck">
+		SELECT COUNT(*)
+		FROM TB_USER
+		WHERE USER_ID = ?
+	</entry>
+	
+	
+	<!-- 로그인 -->
+	<entry key = "login"> 
+		SELECT
+			USER_NO,
+			USER_ID,
+			USER_PW,
+			USER_NAME,
+			TO_CHAR(ENROLL_DATE, 'YYYY"년" MM"월" DD"일"')
+				ENROLL_DATE
+			FROM TB_USER
+			WHERE USER ID = ?
+			AND   USER PW = ?
+	</entry>
+	
+	
 </properties>

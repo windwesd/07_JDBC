@@ -80,6 +80,65 @@ public class UserDaoImpl implements UserDao{
 		// 결과 반환
 		return result;
 	}
+
+
+	@Override
+	public int idCheck(Connection conn, String userId) throws Exception {
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("idCheck");
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, userId);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) { // 결과가 1행밖에 없어서 if 사용
+				result = rs.getInt(1); // 조회 결과 1번 컬럼 값
+			}
+				
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	@Override
+	public User login(Connection conn, String userId, String userPw) throws Exception {
+		
+		// 결과 저장용 변수 선언
+		User loginUser = null;
+		
+		try {
+			String sql = prop.getProperty("login");
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, userId);
+			pstmt.setString(2, userPw);
+			
+			if(rs.next()) {
+				int userNo = rs.getInt("USER_NO");
+				String id = rs.getString("USER_ID");
+				String pw = rs.getString("USER_PW");
+				String userName = rs.getString("USER_NAME");
+				String enrollDate = rs.getString("ENROLL_DATE");
+				
+				loginUser = new User(userNo, userId, userPw, userName, enrollDate);
+			}
+			
+			
+		}finally {
+			close(rs);
+			close(pstmt);
+			
+		}
+		
+		
+		return loginUser;
+	}
 	
 	
 	

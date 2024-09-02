@@ -13,7 +13,8 @@
      <div>
       ID : <input type="text" name="userId" id="userId">
 
-      <span id="check" class="red">이미 사용중인 아이디 입니다</span>
+      <%-- 아이디 중복 여부 확인해서 메세지 출력 --%>
+      <span id="check"></span>
 
     </div>
     <div>

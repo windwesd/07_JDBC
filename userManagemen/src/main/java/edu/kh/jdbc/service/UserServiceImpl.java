@@ -35,5 +35,32 @@ public class UserServiceImpl implements UserService{
 		return result;
 		
 	}
+
+
+	@Override
+	public int idCheck(String userId) throws Exception {
+		
+		Connection conn = getConnection();
+		int result = dao.idCheck(conn, userId);
+		
+		close(conn);
+		
+		return result;
+	}
+
+
+	@Override
+	public User login(String userId, String userPw) throws Exception {
+		
+		Connection conn = getConnection();
+		
+		// DAO 메서드 호출 후 결과 반환 받기
+		User loginUser = dao.login(conn, userId, userPw);
+		
+		close(conn);
+		
+		
+		return loginUser;
+	}
 	
 }

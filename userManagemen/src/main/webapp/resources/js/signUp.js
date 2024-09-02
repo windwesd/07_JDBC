@@ -15,7 +15,19 @@ userId.addEventListener("input", e=>{
   .then(resp => resp.text()) // 응답 값을 text로 변환
   .then(result => {
     // result : 첫 번째 then에서 resp.text()를 통해 변환된 값
-    console.log(result);
+    // console.log(result);
+
+    if(result == 0){ // 중복 X -> 사용 가능
+      check.classList.add("green"); // green 클래스 추가
+      check.classList.remove("red"); // red 클래스 제거
+
+      check.innerText = "사용 가능한 아이디 입니다";
+
+    }else{
+      check.classList.add("red"); // red 클래스 추가
+      check.classList.remove("green"); // green 클래스 제거
+      check.innerText = "이미 사용중인 아이디 입니다";
+    }
 
   });
 

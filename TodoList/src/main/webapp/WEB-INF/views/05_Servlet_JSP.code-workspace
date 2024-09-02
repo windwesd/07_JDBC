@@ -1,0 +1,19 @@
+{
+	"folders": [
+		{
+			"path": "../../../../../.."
+		},
+		{
+			"path": "../../../../../../JSP2"
+		},
+		{
+			"path": "../../../../../../Practice"
+		},
+		{
+			"path": "../../../../.."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "JSP2"
+	}
+}
